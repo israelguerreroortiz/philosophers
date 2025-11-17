@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+         #
+#    By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/03 12:11:13 by iisraa11          #+#    #+#              #
-#    Updated: 2025/10/23 15:08:47 by iisraa11         ###   ########.fr        #
+#    Updated: 2025/11/17 16:15:15 by isrguerr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 SRC = src/philosophers.c src/data_init.c src/dinner.c src/utils.c src/routine.c src/monitor.c
 

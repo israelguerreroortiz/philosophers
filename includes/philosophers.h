@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:07:52 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/10/23 15:28:00 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:50:01 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ struct s_data
     t_philo *philos;
     t_fork *forks;
 };
+
+int	check_dead(t_data *table);
 
 void think(t_philo *philo);
 void eat(t_philo *philo);
