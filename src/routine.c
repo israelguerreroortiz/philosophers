@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:11:32 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/10/23 13:18:46 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:13:32 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void think(t_philo *philo)
 {
     print_action(philo, "is thinking");
 
-    if (philo->table->philo_nbr % 2 == 1)
-        usleep(1000);
+    usleep(1000);
 }
 
 void take_forks(t_philo *philo)
@@ -40,9 +39,8 @@ void take_forks(t_philo *philo)
 
 void eat(t_philo *philo)
 {
-    pthread_mutex_lock(&philo->table->dead_mutex);
-    philo->last_meal_time = get_time_ms();
-    pthread_mutex_unlock(&philo->table->dead_mutex);
+    
+    philo->meal_time = get_time_ms();
 
     print_action(philo, "is eating");
 
@@ -53,7 +51,11 @@ void eat(t_philo *philo)
 
     long long start = get_time_ms();
     while (get_time_ms() - start < philo->table->time_to_eat)
-        usleep(100);
+    {
+        if (simulation_finished(philo))
+            return;
+        usleep(100);       
+    }
 }
 
 void release_forks(t_philo *philo)

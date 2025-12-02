@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:26:32 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/10/23 14:45:51 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:50:29 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,10 @@ int ft_isdigit(int c)
 
 void print_action(t_philo *philo, char *action)
 {
+	if (simulation_finished(philo))
+		return;
+		
     long long timestamp;
-
-    safe_mutex(&philo->table->dead_mutex, LOCK);
-    if (philo->table->dead == 1)
-    {
-        safe_mutex(&philo->table->dead_mutex, UNLOCK);
-        return;
-    }
-    safe_mutex(&philo->table->dead_mutex, UNLOCK);
 
     safe_mutex(&philo->table->print_mutex, LOCK);
     timestamp = get_time_ms() - philo->table->start_time;

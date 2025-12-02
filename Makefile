@@ -6,11 +6,11 @@
 #    By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/03 12:11:13 by iisraa11          #+#    #+#              #
-#    Updated: 2025/10/23 15:08:47 by iisraa11         ###   ########.fr        #
+#    Updated: 2025/11/19 16:01:36 by iisraa11         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 

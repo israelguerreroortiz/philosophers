@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:07:52 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/10/23 15:28:00 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/11/20 13:50:25 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_philo
     t_fork *right_fork;
     pthread_t thread_id;
     t_data *table;
+    pthread_mutex_t meal_mutex;
 } t_philo;
 
 struct s_data

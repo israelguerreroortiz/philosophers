@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 11:37:33 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/10/24 12:32:11 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/11/20 13:50:39 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void parse_args(t_data *table, char **argv)
 	if (table->philo_nbr <= 0)
 		exit_error("Number of philosophers must be greater than 0");
 	table->time_to_die = ft_atol(argv[2]);
-	table->time_to_sleep = ft_atol(argv[3]);
-	table->time_to_eat = ft_atol(argv[4]);
+	table->time_to_eat = ft_atol(argv[3]);
+	table->time_to_sleep = ft_atol(argv[4]);
 	table->required_meals = -1;
 	if (table->argc == 6)
 		table->required_meals = ft_atol(argv[5]);
@@ -89,6 +89,7 @@ static void philo_init(t_data *table)
         table->philos[i].right_fork = &table->forks[i];
         table->philos[i].left_fork = &table->forks[(i + 1) % table->philo_nbr]; // 1 2 3 // 0 1 2
         table->philos[i].table = table;
+        safe_mutex(&table->philos[i].meal_mutex, INIT);
     }
 }
 
