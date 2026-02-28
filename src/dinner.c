@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:15:37 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/11/20 12:38:48 by iisraa11         ###   ########.fr       */
+/*   Updated: 2026/02/28 12:42:28 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,13 @@ static void *philosopher_routine(void *arg)
         
     while (!simulation_finished(philo))
     {
+        safe_mutex(&philo->meal_mutex, LOCK);
         if (philo->full == true)
+        {
+            safe_mutex(&philo->meal_mutex, UNLOCK);
             break;
+        }
+        safe_mutex(&philo->meal_mutex, UNLOCK);
         think(philo);
         take_forks(philo);
         eat(philo);
