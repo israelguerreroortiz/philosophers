@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 13:11:32 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/11/20 12:13:32 by iisraa11         ###   ########.fr       */
+/*   Updated: 2026/02/28 12:42:28 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ void take_forks(t_philo *philo)
 
 void eat(t_philo *philo)
 {
-    
+    safe_mutex(&philo->meal_mutex, LOCK);
     philo->meal_time = get_time_ms();
+    safe_mutex(&philo->meal_mutex, UNLOCK);
 
     print_action(philo, "is eating");
 
     philo->counter_meals++;
 
+    safe_mutex(&philo->meal_mutex, LOCK);
     if (philo->counter_meals == philo->table->required_meals)
         philo->full = true;
+    safe_mutex(&philo->meal_mutex, UNLOCK);
 
     long long start = get_time_ms();
     while (get_time_ms() - start < philo->table->time_to_eat)
